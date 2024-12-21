@@ -22,6 +22,9 @@ public class Schedule {
     @JoinColumn(name = "dentist_id")
     private Dentist dentist;
 
+    @Version
+    private int version;
+
     protected Schedule() {}
 
     public Schedule(String title, String description, LocalTime startTime, LocalTime endTime, String status) {

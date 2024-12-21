@@ -2,6 +2,7 @@ package snakayima.miu.edu.dentalhospitalmgmtsystem.Domain;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Version;
 
 import java.util.List;
 
@@ -14,6 +15,9 @@ public class Patient {
 
     @OneToMany(mappedBy = "patient")
     private List<Appointment> appointment;
+
+    @Version
+    private int version;
 
     protected Patient() {}
 

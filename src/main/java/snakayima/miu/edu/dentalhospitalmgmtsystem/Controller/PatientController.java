@@ -13,12 +13,12 @@ public class PatientController {
 
 
 
-    @PostMapping("/patients")
+    @PostMapping
     public void createPatient(@RequestBody Patient patient) {
         patientService.addPatient(patient);
     }
 
-    @GetMapping("/patients")
+    @GetMapping
     public List<Patient> getAllPatients() {
         return patientService.getAllPatients();
     }

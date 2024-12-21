@@ -11,7 +11,8 @@ import java.util.Collections;
 @Entity
 public class ApplicationUser implements UserDetails{
 
-    @Id@GeneratedValue
+    @Id
+    @GeneratedValue
     private Long id;
     private String username;
     private String password;
@@ -35,9 +36,14 @@ public class ApplicationUser implements UserDetails{
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        // Convert role to a GrantedAuthority
-        return Collections.singletonList(new SimpleGrantedAuthority(role));
+        return Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + role)); // Prefix with "ROLE_"
     }
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
 
     @Override
     public boolean isAccountNonExpired() {
@@ -59,14 +65,6 @@ public class ApplicationUser implements UserDetails{
         return true;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getRole() {
         return role;
     }
@@ -74,15 +72,4 @@ public class ApplicationUser implements UserDetails{
     public void setRole(String role) {
         this.role = role;
     }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", role='" + role + '\'' +
-                ", password='" + password + '\'' +
-                '}';
-    }
-
 }

@@ -1,5 +1,7 @@
 package snakayima.miu.edu.dentalhospitalmgmtsystem.Service;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,9 @@ public class DentistService {
 
     @Autowired
     private DentistRepository dentistRepository;
+
+    @PersistenceContext
+    private EntityManager entityManager;
 
 
     public void createDentist(Dentist dentist) {
@@ -44,6 +49,11 @@ public class DentistService {
     public Dentist getDentistById(Long id) {
         return dentistRepository.findById(id).orElse(null);
     }
+
+    public List<Dentist> getExperiencedAndActiveDentists(int yearsOfExperience) {
+        return dentistRepository.findByExperience(yearsOfExperience);
+    }
+
 
 
 }

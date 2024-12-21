@@ -24,6 +24,8 @@ public class Appointment {
     @OneToMany(mappedBy = "appointment")
     private List<Treatment> treatmentList;
 
+    @Version
+    private int version;
     protected Appointment() {}
 
     public Appointment(String title, String description, LocalDate date, LocalTime time) {
@@ -31,6 +33,10 @@ public class Appointment {
         this.description = description;
         this.date = date;
         this.time = time;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public void addTreatment(Treatment treatment) {

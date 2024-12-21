@@ -3,6 +3,9 @@ import jakarta.persistence.*;
 
 import java.util.List;
 @Entity
+@NamedQuery(name = "Dentist.findByExperienceAndStatus",
+        query = "SELECT d FROM Dentist d JOIN d.schedule s WHERE d.yearsOfExperience >= :years AND s.status = :status")
+
 public class Dentist {
         @Id
         @GeneratedValue
@@ -16,6 +19,8 @@ public class Dentist {
         @OneToMany(mappedBy = "dentist")
         private List<Schedule> schedule;
 
+        @Version
+        private int version;
         protected Dentist() {}
 
     public Dentist(String name, String workerId, int yearsOfExperience) {

@@ -59,22 +59,22 @@ public class DentalHospitalMgmtSystemApplication implements CommandLineRunner {
         Appointment appointment = new Appointment("Dental Surgery","Root Canal",LocalDate.of(2023,12,1),LocalTime.of(12,0));
         appointmentRepository.save(appointment);
 
-        // Add Security Users
-        ApplicationUser admin = new ApplicationUser(
-                "admin",
-                passwordEncoder.encode("admin123"),
-                "ROLE_ADMIN"
-        );
-        userRepository.save(admin);
-
-        ApplicationUser user = new ApplicationUser(
-                "user",
-                passwordEncoder.encode("user123"),
-                "ROLE_USER"
-        );
-        userRepository.save(user);
-        System.out.println("Saving user: " + user);
-    }
+//        // Add Security Users
+//        ApplicationUser admin = new ApplicationUser(
+//                "admin",
+//                passwordEncoder.encode("admin123"),
+//                "ROLE_ADMIN"
+//        );
+//        userRepository.save(admin);
+//
+//        ApplicationUser user = new ApplicationUser(
+//                "user",
+//                passwordEncoder.encode("user123"),
+//                "ROLE_USER"
+//        );
+//        userRepository.save(user);
+//        System.out.println("Saving user: " + user);
+}
 
     public static void main(String[] args) {
         SpringApplication.run(DentalHospitalMgmtSystemApplication.class, args);

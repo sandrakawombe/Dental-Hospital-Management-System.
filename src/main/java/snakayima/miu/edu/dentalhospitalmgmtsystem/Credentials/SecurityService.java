@@ -23,9 +23,8 @@ public class SecurityService implements UserDetailsService {
         return User.builder()
                 .username(user.getUsername())
                 .password(user.getPassword())
-                .roles(user.getRole())  // Use the role stored in ApplicationUser
-                .build(); // Example: Set roles dynamically from user entity
-
+                .roles(user.getRole()) // Spring Security automatically prefixes with "ROLE_"
+                .build();
     }
 
 

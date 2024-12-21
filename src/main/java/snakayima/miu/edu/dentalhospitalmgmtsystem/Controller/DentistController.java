@@ -28,4 +28,13 @@ public class DentistController {
     public void addDentist(@RequestBody Dentist dentist) {
         dentistService.createDentist(dentist);
     }
+
+    @GetMapping("/search")
+    public List<Dentist> getExperiencedDentists(@RequestParam int yearsOfExperience) {
+        return dentistService.getExperiencedAndActiveDentists(yearsOfExperience);
+    }
+
+
+
+
 }

@@ -17,6 +17,9 @@ public class Treatment {
     @JoinColumn(name ="appointment_id")
     private Appointment appointment;
 
+    @Version
+    private int version;
+
     protected Treatment() {}
     public Treatment(String treatmentType, double cost, String description) {
         this.treatmentType = treatmentType;
